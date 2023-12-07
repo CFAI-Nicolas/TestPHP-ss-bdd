@@ -83,14 +83,18 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 	    }
 		if (!$err) {
 			$response = createJwT ($response);
-			$data = array('nom' => 'Remy', 'prenom' => 'Nicolas');
-			$response->getBody()->write(json_encode($data));
-		} else {
-				$response = $response->withStatus(500);
+				if ($login == "emma" and $pass =="toto") {
+		    	$response = addHeaders ($response);
+				$response = createJwT ($response);
+				$data = array('nom' => 'Remy', 'prenom' => 'Nicolas');
+		   		$response->getBody()->write(json_encode($data));
+			} else {          
+		    	$response = $response->withStatus(403);
+			}
+	    	} else {
+			$response = $response->withStatus(500);
+	    	}
+	    	return addHeaders ($response);
 		}
-
-		return addHeaders($response);
-	}
-
 
 
