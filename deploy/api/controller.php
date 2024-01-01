@@ -44,7 +44,13 @@ use Symfony\Component\VarDumper\VarDumper;
 
 		$CatalogueRepository = $entityManager->getRepository('produit');
 		$Catalogue = $CatalogueRepository->findAll();
+
+		$var = "1";
+		var_dump($var);
 		var_dump($Catalogue);
+
+
+
 		$catalogue = json_encode($Catalogue); // Convertir le résultat de la requête en JSON
 
     $response->getBody()->write($catalogue);
