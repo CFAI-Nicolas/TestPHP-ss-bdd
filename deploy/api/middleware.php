@@ -35,7 +35,8 @@
 	    "secure" => false,
 	    "algorithm" => ["HS256"],
 	    "secret" => JWT_SECRET,
-	    "path" => ["/api"],
+	    //"path" => ["/api"],
+		"path" => ["/api/catalogue"], // Ajout du chemin de votre route
 	    "ignore" => ["/api/hello","/api/utilisateur/login","/api/login"],
 	    "error" => function ($response, $arguments) {
 		$data = array('ERREUR' => 'Connexion', 'ERREUR' => 'JWT Non valide');
