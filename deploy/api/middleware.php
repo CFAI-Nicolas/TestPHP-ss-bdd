@@ -36,7 +36,7 @@
 	    "algorithm" => ["HS256"],
 	    "secret" => JWT_SECRET,
 	    "path" => ["/api"],
-	    "ignore" => ["/api/hello","/api/utilisateur/login",,"/api/catalogue","/api/login"],
+	    "ignore" => ["/api/hello","/api/utilisateur/login","/api/catalogue","/api/login"],
 	    "error" => function ($response, $arguments) {
 		$data = array('ERREUR' => 'Connexion', 'ERREUR' => 'JWT Non valide');
 		$response = $response->withStatus(401);
