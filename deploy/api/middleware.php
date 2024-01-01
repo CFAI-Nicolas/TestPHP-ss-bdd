@@ -27,6 +27,7 @@
 	    $response = $response->withHeader("Authorization", "Bearer {$token_jwt}");
 	    return $response;
 	}
+
 	// Middleware de validation du Jwt
 	$options = [
 	    "attribute" => "token",
@@ -36,7 +37,7 @@
 	    "algorithm" => ["HS256"],
 	    "secret" => JWT_SECRET,
 	    "path" => ["/api"],
-	    "ignore" => ["/api/hello","/api/utilisateur/login","/api/catalogue","/api/login"],
+	    "ignore" => ["/api/hello","/api/utilisateur/login"],
 	    "error" => function ($response, $arguments) {
 		$data = array('ERREUR' => 'Connexion', 'ERREUR' => 'JWT Non valide');
 		$response = $response->withStatus(401);
@@ -48,10 +49,10 @@
 	    $response = $response
 	    ->withHeader("Content-Type", "application/json")
 	    ->withHeader('Access-Control-Expose-Headers', 'Authorization');
-		//->withHeader('Access-Control-Allow-Origin', ('https://tpbackend.herokuapp.com'))
+	    //->withHeader('Access-Control-Allow-Origin', ('https://tpbackend.herokuapp.com'))
 	    //->withHeader('Access-Control-Allow-Headers', 'Content-Type,  Authorization')
 	    //->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS')
-	    
+	    //->withHeader('Access-Control-Expose-Headers', 'Authorization');
 
 	    return $response;
 	}
