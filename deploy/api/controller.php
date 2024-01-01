@@ -1,6 +1,8 @@
 <?php
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use Symfony\Component\VarDumper\VarDumper;
+
 
 	function optionsCatalogue (Request $request, Response $response, $args) {
 
@@ -42,6 +44,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 
 		$CatalogueRepository = $entityManager->getRepository('produit');
 		$Catalogue = $CatalogueRepository->findAll();
+		var_dump($Catalogue);
 		$catalogue = json_encode($Catalogue); // Convertir le résultat de la requête en JSON
 
     $response->getBody()->write($catalogue);
